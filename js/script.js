@@ -42,9 +42,9 @@ function taskStatus(id, complete,) {
       if(tareas[i]._id === id){
         tareas[i].complete = complete;
         task = tareas[i];
-        break
+        break;
       }
-    }
+    };
 
   const fetchoptions = {
     method:'PUT', //Nombre de los metodos en mayusucla siempre/
@@ -53,18 +53,18 @@ function taskStatus(id, complete,) {
   fetch(`https://js2-tareas-api.netlify.app/api/tareas/${id}?uid=13`, fetchoptions)
     .then((response) => response.json())
     .then((data)=> {
-      appendTaskDOM(data);
+      console.log(data)
     });
-}
+};
 
 // deleteTask(): Borra una tarea.
 function deleteTask(id) {
   for(let i = 0; tareas.length; i++){
     if(tareas[i]._id===id){
       tareas.splice(i,1); //Primera duda//
-      break
+      break;
     }
-  }
+  };
   const fetchoptions = {
     method:'DELETE', //Nombre de los metodos en mayusucla siempre/
     //Segunda duda de porque no hay un JSON//
@@ -72,7 +72,6 @@ function deleteTask(id) {
   fetch(`https://js2-tareas-api.netlify.app/api/tareas/${id}?uid=13`, fetchoptions)
     .then((response) => response.json())
     .then((data)=> {
-      appendTaskDOM(data);
       console.log(data);
     });
 }
